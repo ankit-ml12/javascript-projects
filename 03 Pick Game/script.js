@@ -57,20 +57,4 @@ btnHold.addEventListener("click", function () {
   document.getElementById(`current--${activePlayer}`).textContent =
     score[activePlayer];
   swithPlayer();
-
-  // if (activePlayer == 0) {
-  //   score0El.textContent = Number(score0El.textContent) + Number(currentScore);
-  //   document.getElementById(`current--${activePlayer}`).textContent = 0;
-  //   activePlayer = 1 - activePlayer;
-  //   currentScore = 0;
-  //   player0El.classList.toggle("player--active");
-  //   player1El.classList.toggle("player--active");
-  // } else {
-  //   score1El.textContent = Number(score1El.textContent) + Number(currentScore);
-  //   document.getElementById(`current--${activePlayer}`).textContent = 0;
-  //   activePlayer = 1 - activePlayer;
-  //   currentScore = 0;
-  //   player0El.classList.toggle("player--active");
-  //   player1El.classList.toggle("player--active");
-  // }
 });
