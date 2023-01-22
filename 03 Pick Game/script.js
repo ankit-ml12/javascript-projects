@@ -16,9 +16,10 @@ score0El.textContent = 0;
 score1El.textContent = 0;
 diceEl.classList.add("hidden");
 
-let scores = [0, 0];
+let score = [0, 0];
 let currentScore = 0;
 let activePlayer = 0;
+let playing = true;
 
 const swithPlayer = function () {
   document.getElementById(`current--${activePlayer}`).textContent = 0;
@@ -32,29 +33,50 @@ const swithPlayer = function () {
 
 btnRoll.addEventListener("click", function () {
   //1. generating a random dice roll
-  let dice = Math.trunc(Math.random() * 6) + 1;
+  if (playing) {
+    let dice = Math.trunc(Math.random() * 6) + 1;
 
-  //2. displying the dice
-  diceEl.classList.remove("hidden");
-  diceEl.src = `dice-${dice}.png`;
+    //2. displying the dice
+    diceEl.classList.remove("hidden");
+    diceEl.src = `dice-${dice}.png`;
 
-  //3. checked for rolled 1
-  if (dice != 1) {
-    //add to the score
-    currentScore += dice;
-    document.getElementById(`current--${activePlayer}`).textContent =
-      currentScore;
-  } else {
-    //switch player
-    swithPlayer();
+    //3. checked for rolled 1
+    if (dice != 1) {
+      //add to the score
+      currentScore += dice;
+
+      document.getElementById(`current--${activePlayer}`).textContent =
+        currentScore;
+    } else {
+      //switch player
+      swithPlayer();
+    }
   }
   // document.querySelector("#current--0").textContent = currentScore;
 });
 
 btnHold.addEventListener("click", function () {
   //add current score to the active player
-  score[activePlayer] += currentScore;
-  document.getElementById(`current--${activePlayer}`).textContent =
-    score[activePlayer];
-  swithPlayer();
+  if (playing) {
+    score[activePlayer] += currentScore;
+    document.getElementById(`score--${activePlayer}`).textContent =
+      score[activePlayer];
+
+    if (score[activePlayer] >= 100) {
+      playing = false;
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.add("player--winner");
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.remove("player--active");
+      document.getElementById(`current--${activePlayer}`).textContent = 0;
+    } else {
+      swithPlayer();
+    }
+  }
+});
+
+btnNew.addEventListener("click", function () {
+  location.reload();
 });
