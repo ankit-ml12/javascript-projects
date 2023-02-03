@@ -30,6 +30,8 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
+/*
+
 // selecting
 const header = document.querySelector("header");
 // creating and inserting element
@@ -75,7 +77,7 @@ message.style.height =
     --gradient-primary: linear-gradient(to top left, #39b385, #9be15d);
     --gradient-secondary: linear-gradient(to top left, #ffb003, #ffcb03);
   }
-*/
+
 //which we can able to access and modified using  javascript
 //to change this property we use
 // document.documentElement.style.setProperty("--color-primary", "orangered");
@@ -112,3 +114,14 @@ console.log(logo.className); // return all the name contain in the class
 
 //but don't use like this and we can set only one class here
 // logo.className = "ankit"; //it remove all the existing classes
+*/
+
+//learn more about it letter
+
+btnScrollTo.addEventListener("click", function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
+  console.log(e);
+});
+
+// do again full at the end
